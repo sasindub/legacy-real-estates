@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   LEGACY REAL ESTATES — Theme tokens (SOLID colors, no gradients)
+   Brand: purple #8d479e · gold #f39223
+   ========================================================= */
+:root {
+  --bg: #14111c;
+  --bg-2: #1c1828;
+  --bg-3: #241f33;
+  --surface: #1c1828;
+  --border: rgba(255, 255, 255, 0.10);
+  --text: #f4f1f7;
+  --text-soft: #c3bcd0;
+  --text-dim: #8a829c;
+  --nav: rgba(20, 17, 28, 0.85);
+  --overlay: rgba(20, 17, 28, 0.62);
+}
+html.light {
+  --bg: #faf7f2;
+  --bg-2: #f3ede4;
+  --bg-3: #ece3d6;
+  --surface: #ffffff;
+  --border: rgba(94, 44, 107, 0.14);
+  --text: #241b2b;
+  --text-soft: #574c61;
+  --text-dim: #8a7f95;
+  --nav: rgba(250, 247, 242, 0.88);
+  --overlay: rgba(20, 17, 28, 0.55);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background .5s cubic-bezier(.22,1,.36,1), color .5s cubic-bezier(.22,1,.36,1);
+}
+::selection { background: #f39223; color: #1a1320; }
+
+/* hide native cursor on devices with a precise pointer (custom cursor takes over) */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button { cursor: none; }
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 11px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: #8d479e; border-radius: 8px; border: 3px solid var(--bg-2); }
+::-webkit-scrollbar-thumb:hover { background: #a85cba; }
+
+@layer utilities {
+  .bg-base { background: var(--bg); }
+  .bg-surface { background: var(--surface); }
+  .bg-elev { background: var(--bg-2); }
+  .text-main { color: var(--text); }
+  .text-soft { color: var(--text-soft); }
+  .text-dim { color: var(--text-dim); }
+  .border-line { border-color: var(--border); }
+  .container-x { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 48px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  html { scroll-behavior: auto; }
+}
